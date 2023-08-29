@@ -1,16 +1,16 @@
 const data = require('../data/zoo_data');
 
 const getSpeciesByIds = (...ids) => {
-  const array = [];
+  const foundSpecies = [];
   ids.forEach((id) => {
-    const find = data.species.find((specie) => specie.id === id);
-    if (find !== undefined) {
-      return array.push(find);
+    const findSpeciesId = data.species.find((specie) => specie.id === id);
+    if (findSpeciesId !== undefined) {
+      return foundSpecies.push(findSpeciesId);
     }
-    return array.push();
+    return foundSpecies.push();
   });
 
-  return array;
+  return foundSpecies;
 };
 
 console.log(getSpeciesByIds());
