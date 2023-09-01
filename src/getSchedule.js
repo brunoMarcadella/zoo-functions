@@ -33,15 +33,14 @@ const days = {
 
 const noParameter = (scheduleTarget) => {
   data.species.forEach((specie) => {
-    specie.availability.forEach((day) => {
-      days[day].exhibition.push(specie.name);
-      return days;
-    });
+    specie.availability.forEach((day) => days[day].exhibition.push(specie.name));
   });
   if (scheduleTarget === undefined || !Object.keys(days).includes(scheduleTarget)) {
     return days;
   }
-  return days[scheduleTarget];
+  const obj = {};
+  obj[scheduleTarget] = days[scheduleTarget];
+  return obj;
 };
 
 const getSchedule = (scheduleTarget) => {
@@ -54,5 +53,5 @@ const getSchedule = (scheduleTarget) => {
   }
 };
 
-// console.log(getSchedule('B'));
+console.log(getSchedule('qualquercoisa'));
 module.exports = getSchedule;
