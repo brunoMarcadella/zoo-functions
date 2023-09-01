@@ -53,5 +53,5 @@ const getSchedule = (scheduleTarget) => {
   }
 };
 
-console.log(getSchedule('qualquercoisa'));
+// console.log(getSchedule('qualquercoisa'));
 module.exports = getSchedule;
