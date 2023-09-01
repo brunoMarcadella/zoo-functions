@@ -21,5 +21,5 @@ const countAnimals = (animal = 'all Animals') => {
   return allAnimalsPopularity;
 };
 
-console.log(countAnimals());
+// console.log(countAnimals());
 module.exports = countAnimals;
