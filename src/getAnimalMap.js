@@ -51,6 +51,8 @@ const data = require('../data/zoo_data');
 //   }
 //   return 1;
 // };
+const getAnimalMap = (options) => {
 
+};
 // console.log(getAnimalMap({ includeNames: true }));
 module.exports = getAnimalMap;
