@@ -28,4 +28,10 @@ describe('Testes da função HandlerElephants', () => {
   it('Se não passando argumentos a função deve retornar undefined', () => {
     expect(handlerElephants()).toBeUndefined();
   });
+  it('Se o parametro não for uma string a função deve retornar "Parâmetro inválido, é necessário uma string"', () => {
+    expect(handlerElephants(3)).toBe('Parâmetro inválido, é necessário uma string');
+  });
+  it('Se o parametro for uma string diferente de count, names ou averageAge a função deve retornar null', () => {
+    expect(handlerElephants('qualquercoisa')).toBe(null);
+  });
 });
