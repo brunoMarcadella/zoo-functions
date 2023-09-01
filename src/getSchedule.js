@@ -33,7 +33,9 @@ const days = {
 
 const noParameter = (scheduleTarget) => {
   data.species.forEach((specie) => {
-    specie.availability.forEach((day) => days[day].exhibition.push(specie.name));
+    specie.availability.forEach((day) => {
+      days[day].exhibition.push(specie.name);
+    });
   });
   if (scheduleTarget === undefined || !Object.keys(days).includes(scheduleTarget)) {
     return days;
@@ -43,7 +45,15 @@ const noParameter = (scheduleTarget) => {
   return obj;
 };
 
+const clearArray = () => {
+  const weekDays = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  weekDays.forEach((weekDay) => {
+    days[weekDay].exhibition.length = 0;
+  });
+};
+
 const getSchedule = (scheduleTarget) => {
+  clearArray();
   const animalSchedule = data.species.find((specie) => scheduleTarget === specie.name);
   if (animalSchedule !== undefined) {
     return animalSchedule.availability;
@@ -53,5 +63,6 @@ const getSchedule = (scheduleTarget) => {
   }
 };
 
-// console.log(getSchedule('qualquercoisa'));
+console.log(getSchedule());
+console.log(getSchedule());
 module.exports = getSchedule;
