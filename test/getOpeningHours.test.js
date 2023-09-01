@@ -28,15 +28,15 @@ describe('Testes da função getOpeningHours', () => {
     expect(getOpeningHours('Wednesday', '09:00-PM')).toBe('The zoo is closed');
   });
   it('Se ao receber os argumentos "Thu" e "09:00-AM" lança a mensagem "The day must be valid. Example: Monday"', () => {
-    expect(getOpeningHours('Thu', '09:00-AM')).toThrow(new Error('The day must be valid. Example: Monday'));
+    expect(() => { getOpeningHours('Thu', '09:00-AM'); }).toThrow(new Error('The day must be valid. Example: Monday'));
   });
   it('Se ao receber os argumentos "Friday" e "09:00-ZM" lança a mensagem "The abbreviation must be AM or PM"', () => {
-    expect(getOpeningHours('Friday', '09:00-ZM')).toThrow(new Error('The abbreviation must be \'AM\' or \'PM\''));
+    expect(() => { getOpeningHours('Friday', '09:00-ZM'); }).toThrow(new Error('The abbreviation must be \'AM\' or \'PM\''));
   });
   it('Se ao receber os argumentos "Saturday" e "C9:00-AM" lança a mensagem "The hour should represent a number"', () => {
-    expect(getOpeningHours('Saturday', 'C9:00-AM')).toThrow(new Error('The hour should represent a number'));
+    expect(() => { getOpeningHours('Saturday', 'C9:00-AM'); }).toThrow(new Error('The hour should represent a number'));
   });
   it('Se ao receber os argumentos "Sunday" e "09:c0-AM" lança a mensagem "The minutes should represent a number"', () => {
-    expect(getOpeningHours('Sunday', '09:c0-AM')).toThrow(new Error('The minutes should represent a number'));
+    expect(() => { getOpeningHours('Sunday', '09:c0-AM'); }).toThrow(new Error('The minutes should represent a number'));
   });
 });
