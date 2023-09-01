@@ -38,12 +38,12 @@ const noParameter = (scheduleTarget) => {
       return days;
     });
   });
-  if (scheduleTarget === undefined) {
+  if (scheduleTarget === undefined || !Object.keys(days).includes(scheduleTarget)) {
     return days;
   }
   return days[scheduleTarget];
 };
-// console.log(noParameter('Monda'));
+
 const getSchedule = (scheduleTarget) => {
   const animalSchedule = data.species.find((specie) => scheduleTarget === specie.name);
   if (animalSchedule !== undefined) {
@@ -54,5 +54,5 @@ const getSchedule = (scheduleTarget) => {
   }
 };
 
-// console.log(getSchedule());
+// console.log(getSchedule('B'));
 module.exports = getSchedule;

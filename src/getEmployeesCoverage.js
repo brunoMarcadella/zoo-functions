@@ -5,10 +5,20 @@ const nameAsObject = (obj) => {
   if (person === undefined) {
     person = data.employees.find((employee) => employee.lastName === obj.name);
   }
+  if (person === undefined) {
+    return undefined;
+  }
   return person;
 };
 
-const idAsObject = (obj) => data.employees.find(((employee) => employee.id === obj.id));
+const idAsObject = (obj) => {
+  const person = data.employees.find((employee) => employee.id === obj.id);
+  if (person === undefined) {
+    return undefined;
+  }
+
+  return person;
+};
 
 const turnSpeciesIdsInSpeciesNames = (ids) => {
   const arrayOfSpeciesNames = [];
@@ -50,7 +60,8 @@ const getEmployeesCoverage = (obj) => {
     person = nameAsObject(obj);
   } else if (Object.keys(obj)[0] === 'id') {
     person = idAsObject(obj);
-  } else {
+  }
+  if (person === undefined) {
     throw new Error('Informações inválidas');
   }
   return {
@@ -61,7 +72,7 @@ const getEmployeesCoverage = (obj) => {
   };
 };
 
-// console.log(getEmployeesCoverage({ name: 'Sharonda' }));
+// console.log(getEmployeesCoverage({ name: 'Sharondao' }));
 // console.log(getEmployeesCoverage({ name: 'Spry' }));
 // console.log(getEmployeesCoverage({ id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad' }));
 // console.log(getEmployeesCoverage());
