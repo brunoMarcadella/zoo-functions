@@ -52,6 +52,13 @@ const findSortedSpeciesAndNamesWithLocation = (location) => {
   return animals;
 };
 
+const arraySort = (array, options) => {
+  if (options.sorted !== undefined) {
+    return array.sort();
+  }
+  return array;
+};
+
 const findSexSpeciesAndNamesWithLocation = (location, sex, options) => {
   const animals = [];
   data.species.forEach((specie) => {
@@ -62,11 +69,9 @@ const findSexSpeciesAndNamesWithLocation = (location, sex, options) => {
           arrayOfNames.push(resident.name);
         }
       });
-      if (options.sorted !== undefined) {
-        arrayOfNames.sort();
-      }
+      const newArrayOfNames = arraySort(arrayOfNames, options);
       const obj = {};
-      obj[specie.name] = arrayOfNames;
+      obj[specie.name] = newArrayOfNames;
       animals.push(obj);
     }
   });
