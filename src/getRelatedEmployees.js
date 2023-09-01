@@ -14,22 +14,18 @@ const isManager = (id) => {
 };
 
 const getRelatedEmployees = (managerId) => {
-  try {
-    if (!isManager(managerId)) {
-      throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
-    }
-    const cooperatorsArray = [];
-    data.employees.forEach((employee) => {
-      employee.managers.forEach((manager) => {
-        if (manager === managerId) {
-          cooperatorsArray.push(`${employee.firstName} ${employee.lastName}`);
-        }
-      });
-    });
-    return cooperatorsArray;
-  } catch (error) {
-    return error.message;
+  if (!isManager(managerId)) {
+    throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
+  const cooperatorsArray = [];
+  data.employees.forEach((employee) => {
+    employee.managers.forEach((manager) => {
+      if (manager === managerId) {
+        cooperatorsArray.push(`${employee.firstName} ${employee.lastName}`);
+      }
+    });
+  });
+  return cooperatorsArray;
 };
 
 // console.log(getRelatedEmployees('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));

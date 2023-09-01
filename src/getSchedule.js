@@ -26,8 +26,8 @@ const days = {
     exhibition: [],
   },
   Monday: {
-    officeHour: 'The zoo will be closed!',
-    exhibition: 'CLOSED',
+    officeHour: 'CLOSED',
+    exhibition: 'The zoo will be closed!',
   },
 };
 
@@ -35,6 +35,7 @@ const noParameter = (scheduleTarget) => {
   data.species.forEach((specie) => {
     specie.availability.forEach((day) => {
       days[day].exhibition.push(specie.name);
+      return days;
     });
   });
   if (scheduleTarget === undefined) {
@@ -42,7 +43,7 @@ const noParameter = (scheduleTarget) => {
   }
   return days[scheduleTarget];
 };
-
+// console.log(noParameter('Monda'));
 const getSchedule = (scheduleTarget) => {
   const animalSchedule = data.species.find((specie) => scheduleTarget === specie.name);
   if (animalSchedule !== undefined) {
